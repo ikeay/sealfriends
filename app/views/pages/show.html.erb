@@ -1,0 +1,18 @@
+<b>Picture</b><br/>
+<%= image_tag picture_page_path(@picture), :height => '64' %><br/>
+<b>Name:</b>&nbsp;&nbsp;<%= @user_name %><br/>
+<b>Bio:</b>&nbsp;&nbsp;<%= @user_profile %><br/>
+<hr>
+<b>Friends Comment</b>&nbsp;&nbsp;<%= link_to 'New Comment', new_page_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+  </tr>
+<% @introduction.each do |introduction| %>
+  <tr>
+    <td><%= User.find(introduction.author).name %></td>
+    <td><%= introduction.comment %></td>
+  </tr>
+<% end %>
+</table>

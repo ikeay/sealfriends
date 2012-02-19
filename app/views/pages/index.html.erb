@@ -1,0 +1,33 @@
+<h1>My Profile</h1>
+<% if user_signed_in? %>
+<b>Picture:</b><br/>
+<% if @picture %>
+<%= image_tag show_picture_page_path(@picture), :height => '64' %>
+<% else %>
+No Picture=>
+<% end %>
+<%= link_to "Change Picture", "/pages/#{current_user.id}/picture"%><br/>
+<br/>
+<b>Name:</b>&nbsp;&nbsp;<%= @current_user_name %><br/>
+<b>Bio:</b>&nbsp;&nbsp;<%= @current_user_profile %><br/>
+<% end %>
+<hr>
+<b>Friends Comment</b>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Link</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @introductions.each do |introduction| %>
+  <tr>
+    <td><%= User.find(introduction.author).name %></td>
+     <td><%= link_to "Page Link", "pages/#{introduction.author}" %></td>
+     <td><%= introduction.comment %></td>
+     <td><%= link_to 'Destroy', introduction, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

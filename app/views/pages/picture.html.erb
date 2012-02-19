@@ -1,0 +1,11 @@
+<%= form_tag("/pages/#{current_user.id}/picture", {:multipart => true }) do  %>
+<h1>New Picture</h1>
+<div class="field">
+    <%= label_tag :picture_file %><br />
+    <%= file_field_tag :picture_file %>
+</div>
+ <div class="actions">
+    <%= submit_tag %>
+</div>
+<% end %>
+<%= link_to 'Back', page_path %>
